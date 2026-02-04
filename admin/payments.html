@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Payments</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="admin-payments-container">
+    <h2>Payments - Admin</h2>
+    <p>List of recent payments. Approve a pending payment to enroll the user.</p>
+
+    <div id="payments-list">
+      <table id="payments-table" class="payments-table">
+        <thead>
+          <tr class="payments-table-head-row">
+            <th>ID</th>
+            <th>User</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+  </div>
+  <script src="/admin/payments.js"></script>
+</body>
+</html>

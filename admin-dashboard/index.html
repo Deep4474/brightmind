@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - APKL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>APKL Student</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <span class="icon">🏠</span> Dashboard
+                    </a></li>
+                    <li><a href="#class-activities" class="nav-link" data-section="class-activities">
+                        <span class="icon">📚</span> Class Activities
+                    </a></li>
+                    <li><a href="#notification" class="nav-link" data-section="notification">
+                        <span class="icon">🔔</span> Notification
+                    </a></li>
+                    <li><a href="#programming-lab" class="nav-link" data-section="programming-lab">
+                        <span class="icon">💻</span> Programming Lab
+                    </a></li>
+                    <li><a href="#library" class="nav-link" data-section="library">
+                        <span class="icon">📖</span> Library
+                    </a></li>
+                    <li><a href="#" class="nav-link logout" id="logout-btn">
+                        <span class="icon">🚪</span> Logout
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="top-bar-right">
+                    <input type="search" class="search-box" placeholder="Search...">
+                    <div class="user-profile">
+                        <span id="user-name">John Doe</span>
+                        <div class="user-avatar">👤</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">�</div>
+                            <div class="stat-info">
+                                <h3>Class Activities</h3>
+                                <p class="stat-value" id="activities-count">3</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🔔</div>
+                            <div class="stat-info">
+                                <h3>Notifications</h3>
+                                <p class="stat-value" id="notifications-count">12</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💻</div>
+                            <div class="stat-info">
+                                <h3>Programming Lab</h3>
+                                <p class="stat-value" id="lab-progress">24/50</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📖</div>
+                            <div class="stat-info">
+                                <h3>Library</h3>
+                                <p class="stat-value" id="library-count">15</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Class Activities Section -->
+                    <div class="section-panel">
+                        <h3>Class Activities</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="class-activities">
+                                <tr>
+                                    <td>Database Systems</td>
+                                    <td>Assignment 2 posted</td>
+                                    <td>2026-01-30</td>
+                                    <td><button class="btn-small btn-view">Open</button></td>
+                                </tr>
+                                <tr>
+                                    <td>OOP</td>
+                                    <td>Live session scheduled</td>
+                                    <td>2026-02-01</td>
+                                    <td><button class="btn-small btn-view">Join</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Web Development</td>
+                                    <td>Project submission deadline</td>
+                                    <td>2026-02-05</td>
+                                    <td><button class="btn-small btn-view">Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Notification Section -->
+                    <div class="section-panel" id="notification-section-panel">
+                        <h3>Notifications</h3>
+                        <div class="notification-content">
+                            <div class="notification-item">
+                                <div class="notification-icon">📢</div>
+                                <div class="notification-details">
+                                    <h4>New Assignment Posted</h4>
+                                    <p>Database Systems: Assignment 3 has been posted</p>
+                                    <span class="notification-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">🔔</div>
+                                <div class="notification-details">
+                                    <h4>Class Rescheduled</h4>
+                                    <p>OOP class has been rescheduled to 3:00 PM tomorrow</p>
+                                    <span class="notification-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">✅</div>
+                                <div class="notification-details">
+                                    <h4>Grade Published</h4>
+                                    <p>Your grade for Web Development Project has been published</p>
+                                    <span class="notification-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Class Activities Section -->
+                <section id="class-activities-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Class Activities</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="class-activities">
+                                <tr>
+                                    <td>Database Systems</td>
+                                    <td>Assignment 2 posted</td>
+                                    <td>2026-01-30</td>
+                                    <td><button class="btn-small btn-view">Open</button></td>
+                                </tr>
+                                <tr>
+                                    <td>OOP</td>
+                                    <td>Live session scheduled</td>
+                                    <td>2026-02-01</td>
+                                    <td><button class="btn-small btn-view">Join</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Web Development</td>
+                                    <td>Project submission deadline</td>
+                                    <td>2026-02-05</td>
+                                    <td><button class="btn-small btn-view">Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Notification Section -->
+                <section id="notification-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Notifications</h3>
+                        <div class="notification-content">
+                            <div class="notification-item">
+                                <div class="notification-icon">📢</div>
+                                <div class="notification-details">
+                                    <h4>New Assignment Posted</h4>
+                                    <p>Database Systems: Assignment 3 has been posted</p>
+                                    <span class="notification-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">🔔</div>
+                                <div class="notification-details">
+                                    <h4>Class Rescheduled</h4>
+                                    <p>OOP class has been rescheduled to 3:00 PM tomorrow</p>
+                                    <span class="notification-time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">✅</div>
+                                <div class="notification-details">
+                                    <h4>Grade Published</h4>
+                                    <p>Your grade for Web Development Project has been published</p>
+                                    <span class="notification-time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Programming Lab Section -->
+                <section id="programming-lab-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Programming Lab</h3>
+                        <div class="lab-content">
+                            <div class="lab-item">
+                                <h4>💻 Live Coding Session</h4>
+                                <p>Join our weekly live coding sessions every Friday at 4:00 PM</p>
+                                <p><strong>Next session:</strong> 2026-02-01</p>
+                                <button class="btn btn-primary" id="join-lab">Join Lab</button>
+                            </div>
+                            <div class="lab-item">
+                                <h4>🚀 Practice Problems</h4>
+                                <p>Solve daily coding challenges and improve your programming skills</p>
+                                <p><strong>Difficulty:</strong> Beginner - Advanced</p>
+                                <button class="btn btn-primary" id="start-practice">Start Practice</button>
+                            </div>
+                            <div class="lab-item">
+                                <h4>📊 Progress Tracking</h4>
+                                <p>View your lab completion rate and coding statistics</p>
+                                <p><strong>Completed:</strong> 24 / 50 exercises</p>
+                                <button class="btn btn-primary" id="view-progress">View Progress</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Library Section -->
+                <section id="library-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Library</h3>
+                        <div class="library-content">
+                            <div class="library-item">
+                                <h4>📖 Course Materials</h4>
+                                <ul id="course-materials">
+                                    <li><a href="#">OOP Lecture Notes - Chapter 5</a></li>
+                                    <li><a href="#">Database Design Patterns</a></li>
+                                    <li><a href="#">Web Dev Best Practices 2026</a></li>
+                                    <li><a href="#">Python Algorithm Guide</a></li>
+                                </ul>
+                            </div>
+                            <div class="library-item">
+                                <h4>📚 Reference Books</h4>
+                                <ul id="reference-books">
+                                    <li><a href="#">Clean Code: A Handbook of Agile Software Craftsmanship</a></li>
+                                    <li><a href="#">Design Patterns: Elements of Reusable Object-Oriented Software</a></li>
+                                    <li><a href="#">The Pragmatic Programmer</a></li>
+                                </ul>
+                            </div>
+                            <div class="library-item">
+                                <h4>🔗 External Resources</h4>
+                                <ul id="external-resources">
+                                    <li><a href="#">Stack Overflow</a></li>
+                                    <li><a href="#">GitHub Repository</a></li>
+                                    <li><a href="#">MDN Web Docs</a></li>
+                                    <li><a href="#">Dev Community</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="users-section" class="content-section">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                        <button class="btn btn-primary" id="add-user-btn">+ Add User</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table">
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>john@example.com</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>2025-01-15</td>
+                                <td>
+                                    <button class="btn-small btn-edit">Edit</button>
+                                    <button class="btn-small btn-delete">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="orders-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Orders Management</h2>
+                        <input type="search" placeholder="Search orders...">
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table">
+                            <tr>
+                                <td>#001</td>
+                                <td>John Doe</td>
+                                <td>Product A</td>
+                                <td>$120.00</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                                <td>
+                                    <button class="btn-small btn-view">View</button>
+                                    <button class="btn-small btn-edit">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- Products Section -->
+                <section id="products-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Products Management</h2>
+                        <button class="btn btn-primary" id="add-product-btn">+ Add Product</button>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-placeholder">
+                                <svg width="100" height="100" viewBox="0 0 100 100">
+                                    <text x="50" y="50" font-size="48" text-anchor="middle" dy=".3em">📦</text>
+                                </svg>
+                            </div>
+                            <h3>Product A</h3>
+                            <p class="price">$99.99</p>
+                            <p class="stock">Stock: 45</p>
+                            <div class="product-actions">
+                                <button class="btn-small btn-edit">Edit</button>
+                                <button class="btn-small btn-delete">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section id="analytics-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Analytics</h2>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Page Views</h3>
+                            <canvas id="pageViewsChart"></canvas>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Sales Trend</h3>
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label for="site-name">Site Name</label>
+                            <input type="text" id="site-name" value="APKL Store" class="form-control" placeholder="Enter site name">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-email">Admin Email</label>
+                            <input type="email" id="admin-email" value="admin@apkl.com" class="form-control" placeholder="Enter admin email">
+                        </div>
+                        <div class="form-group">
+                            <label for="support-email">Support Email</label>
+                            <input type="email" id="support-email" value="support@apkl.com" class="form-control" placeholder="Enter support email">
+                        </div>
+                        <div class="form-group">
+                            <label for="maintenance-mode">Maintenance Mode</label>
+                            <input type="checkbox" id="maintenance-mode" class="form-checkbox">
+                        </div>
+                        <button class="btn btn-primary">Save Settings</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

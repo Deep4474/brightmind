@@ -1,0 +1,53 @@
+/* Teacher Dashboard - Additional Styles */
+
+/* Status badge colors */
+.status-success {
+    color: #00c896;
+}
+
+.status-primary {
+    color: #0066cc;
+}
+
+/* Grade colors */
+.grade-excellent {
+    color: #00c896;
+}
+
+.grade-good {
+    color: #0066cc;
+}
+
+/* Announcement section styles */
+.announcement-form {
+    margin-bottom: 20px;
+}
+
+.announcement-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.announcement-btn {
+    margin-top: 10px;
+}
+
+/* Announcement card styles */
+.announcement-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.announcement-card:last-child {
+    margin-bottom: 0;
+}
+
+.announcement-timestamp {
+    color: #999;
+}

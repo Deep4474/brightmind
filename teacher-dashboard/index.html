@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard - APKL</title>
+    <link rel="stylesheet" href="../admin-dashboard/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>APKL Teacher</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <span class="icon">🏠</span> Dashboard
+                    </a></li>
+                    <li><a href="#my-courses" class="nav-link" data-section="my-courses">
+                        <span class="icon">📚</span> My Courses
+                    </a></li>
+                    <li><a href="#assignments" class="nav-link" data-section="assignments">
+                        <span class="icon">📝</span> Assignments
+                    </a></li>
+                    <li><a href="#grades" class="nav-link" data-section="grades">
+                        <span class="icon">📊</span> Grades
+                    </a></li>
+                    <li><a href="#students" class="nav-link" data-section="students">
+                        <span class="icon">👥</span> Students
+                    </a></li>
+                    <li><a href="#announcements" class="nav-link" data-section="announcements">
+                        <span class="icon">📢</span> Announcements
+                    </a></li>
+                    <li><a href="#" class="nav-link logout" id="logout-btn">
+                        <span class="icon">🚪</span> Logout
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <h1 id="page-title">Dashboard</h1>
+                <div class="top-bar-right">
+                    <input type="search" class="search-box" placeholder="Search...">
+                    <div class="user-profile">
+                        <span id="user-name">Dr. Teacher</span>
+                        <div class="user-avatar">👤</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="dashboard-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-info">
+                                <h3>My Courses</h3>
+                                <p class="stat-value" id="courses-count">3</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <h3>Total Students</h3>
+                                <p class="stat-value" id="students-count">45</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📝</div>
+                            <div class="stat-info">
+                                <h3>Pending Assignments</h3>
+                                <p class="stat-value" id="assignments-count">8</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-info">
+                                <h3>Submissions</h3>
+                                <p class="stat-value" id="submissions-count">32</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="section-panel">
+                        <h3>Recent Activities</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Data Structures</td>
+                                    <td>Assignment 2 posted</td>
+                                    <td>2026-01-28</td>
+                                    <td><span class="status-success">✅ Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Algorithms</td>
+                                    <td>Graded 12 submissions</td>
+                                    <td>2026-01-27</td>
+                                    <td><span class="status-success">✅ Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Web Development</td>
+                                    <td>New student enrolled</td>
+                                    <td>2026-01-26</td>
+                                    <td><span class="status-success">✅ Noted</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- My Courses Section -->
+                <section id="my-courses-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>My Courses</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course Code</th>
+                                    <th>Course Name</th>
+                                    <th>Students</th>
+                                    <th>Schedule</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CS101</td>
+                                    <td>Introduction to Programming</td>
+                                    <td>25</td>
+                                    <td>MWF 10:00-11:00</td>
+                                    <td><button class="btn-small btn-view">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CS102</td>
+                                    <td>Data Structures</td>
+                                    <td>20</td>
+                                    <td>TTh 14:00-15:30</td>
+                                    <td><button class="btn-small btn-view">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CS201</td>
+                                    <td>Database Systems</td>
+                                    <td>18</td>
+                                    <td>MWF 13:00-14:00</td>
+                                    <td><button class="btn-small btn-view">Manage</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Assignments Section -->
+                <section id="assignments-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Manage Assignments</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Assignment</th>
+                                    <th>Due Date</th>
+                                    <th>Submissions</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CS101</td>
+                                    <td>Assignment 2</td>
+                                    <td>2026-02-05</td>
+                                    <td>12/25</td>
+                                    <td><button class="btn-small btn-view">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CS102</td>
+                                    <td>Lab Report 3</td>
+                                    <td>2026-02-02</td>
+                                    <td>18/20</td>
+                                    <td><button class="btn-small btn-view">Grade</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CS201</td>
+                                    <td>Project Proposal</td>
+                                    <td>2026-01-31</td>
+                                    <td>15/18</td>
+                                    <td><button class="btn-small btn-view">Review</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Grades Section -->
+                <section id="grades-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Grade Management</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Student</th>
+                                    <th>Assessment</th>
+                                    <th>Score</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CS101</td>
+                                    <td>John Smith</td>
+                                    <td>Quiz 1</td>
+                                    <td>85/100</td>
+                                    <td><span class="grade-excellent">A</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CS102</td>
+                                    <td>Jane Doe</td>
+                                    <td>Midterm</td>
+                                    <td>92/100</td>
+                                    <td><span class="grade-excellent">A+</span></td>
+                                </tr>
+                                <tr>
+                                    <td>CS201</td>
+                                    <td>Bob Wilson</td>
+                                    <td>Project</td>
+                                    <td>78/100</td>
+                                    <td><span class="grade-good">B+</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Students Section -->
+                <section id="students-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Enrolled Students</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Course</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>STU001</td>
+                                    <td>John Smith</td>
+                                    <td>john@apkl.edu</td>
+                                    <td>CS101, CS102</td>
+                                    <td><span class="status-success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>STU002</td>
+                                    <td>Jane Doe</td>
+                                    <td>jane@apkl.edu</td>
+                                    <td>CS102, CS201</td>
+                                    <td><span class="status-success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>STU003</td>
+                                    <td>Bob Wilson</td>
+                                    <td>bob@apkl.edu</td>
+                                    <td>CS201</td>
+                                    <td><span class="status-success">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Announcements Section -->
+                <section id="announcements-section" class="content-section">
+                    <div class="section-panel">
+                        <h3>Post Announcements</h3>
+                        <div class="announcement-form">
+                            <textarea id="announcement-text" class="announcement-textarea" placeholder="Write your announcement here..."></textarea>
+                            <button class="btn btn-primary announcement-btn" onclick="postAnnouncement()">Post Announcement</button>
+                        </div>
+                        <h4>Recent Announcements</h4>
+                        <div class="announcement-card">
+                            <p><strong>Class Cancelled</strong> - CS101 class on Jan 30 is postponed to Feb 2</p>
+                            <small class="announcement-timestamp">Posted: 2026-01-28</small>
+                        </div>
+                        <div class="announcement-card">
+                            <p><strong>Assignment Deadline Extended</strong> - CS102 assignment deadline extended to Feb 5</p>
+                            <small class="announcement-timestamp">Posted: 2026-01-27</small>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Get teacher data from localStorage
+        const teacherData = JSON.parse(localStorage.getItem('teacherData') || '{}');
+        const teacherToken = localStorage.getItem('teacherToken');
+
+        // Check if teacher is logged in
+        if (!teacherToken || !teacherData.email) {
+            console.log('❌ Teacher not authenticated');
+            window.location.href = '../teacher.html';
+        }
+
+        // Navigation switching functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const pageTitle = document.getElementById('page-title');
+
+        // Navigation titles mapping
+        const navigationTitles = {
+            'dashboard': 'Dashboard',
+            'my-courses': 'My Courses',
+            'assignments': 'Assignments',
+            'grades': 'Grades',
+            'students': 'Students',
+            'announcements': 'Announcements'
+        };
+
+        // Add click handlers to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.classList.contains('logout')) {
+                    handleLogout();
+                    return;
+                }
+
+                e.preventDefault();
+
+                // Get section name
+                const sectionName = link.getAttribute('data-section');
+                if (!sectionName) return;
+
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Hide all sections
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // Show selected section
+                const selectedSection = document.getElementById(`${sectionName}-section`);
+                if (selectedSection) {
+                    selectedSection.classList.add('active');
+                    pageTitle.textContent = navigationTitles[sectionName] || 'Dashboard';
+                }
+
+                // Update URL
+                window.history.pushState(null, null, `#${sectionName}`);
+            });
+        });
+
+        // Initialize page
+        function initPage() {
+            // Set teacher name
+            const teacherName = teacherData.name || 'Dr. Teacher';
+            document.getElementById('user-name').textContent = teacherName;
+            const initials = (teacherName || '').split(' ').map(n => n[0]).join('').toUpperCase();
+            document.getElementById('user-avatar').textContent = initials || 'DT';
+
+            // Setup button handlers
+            setupButtons();
+        }
+
+        // Setup buttons
+        function setupButtons() {
+            const buttons = document.querySelectorAll('.btn-view');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    alert('Action: ' + btn.textContent);
+                });
+            });
+        }
+
+        // Post announcement
+        function postAnnouncement() {
+            const text = document.getElementById('announcement-text').value;
+            if (!text.trim()) {
+                alert('❌ Please write an announcement');
+                return;
+            }
+            alert('✅ Announcement posted successfully!');
+            document.getElementById('announcement-text').value = '';
+        }
+
+        // Logout
+        function handleLogout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('teacherToken');
+                localStorage.removeItem('teacherData');
+                window.location.href = '../teacher.html';
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', initPage);
+    </script>
+</body>
+</html>

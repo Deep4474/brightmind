@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">Edu<span>Hub</span></div>
+      <nav>
+        <a class="active">Dashboard</a>
+        <a>Payments</a>
+        <a>Registration</a>
+        <a>Courses</a>
+        <a>Messages</a>
+        <a>Settings</a>
+      </nav>
+      <div class="logout">Logout</div>
+    </aside>
+
+    <main class="main">
+      <header class="top">
+        <div class="search"><input placeholder="Search" /></div>
+        <div class="profile">
+          <div class="notif">🔔</div>
+          <div class="avatar">JD</div>
+        </div>
+      </header>
+
+      <section class="banner">
+        <div class="welcome">
+          <h1>Welcome back, John!</h1>
+          <p>Always stay updated in your student portal</p>
+        </div>
+        <div class="banner-art">🎓</div>
+      </section>
+
+      <section class="cards">
+        <div class="card small">$ 10,000<br><span>Tuition</span></div>
+        <div class="card small">$ 5,000<br><span>Amount Paid</span></div>
+        <div class="card small">3<br><span>Courses</span></div>
+        <div class="card small">12<br><span>Notices</span></div>
+      </section>
+
+      <section class="content-grid">
+        <div class="left">
+          <div class="panel">
+            <h3>Enrolled Courses</h3>
+            <div class="course">
+              <div class="course-info">
+                <strong>Object oriented programming</strong>
+                <p>Instructor: Jane Doe</p>
+              </div>
+              <button>View</button>
+            </div>
+            <div class="course">
+              <div class="course-info">
+                <strong>Fundamentals of database systems</strong>
+                <p>Instructor: Mark Lee</p>
+              </div>
+              <button>View</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="right">
+          <div class="panel small">
+            <h4>Course Instructors</h4>
+            <div class="instructor">Jane Doe <span>UI/UX</span></div>
+            <div class="instructor">Mark Lee <span>Databases</span></div>
+          </div>
+          <div class="panel small notice">
+            <h4>Daily notice</h4>
+            <p>Premium payment due. Please check payment tab.</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
