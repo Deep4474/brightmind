@@ -146,7 +146,12 @@
     let intervalId = null;
     const check = async () => {
       try {
-        const res = await fetch('/api/user-approval/' + encodeURIComponent(userId));
+        // Use config API URL if available, otherwise fallback
+        const apiUrl = (window.appConfig && window.appConfig.API_URL) ? 
+          window.appConfig.API_URL + '/api/user-approval/' + encodeURIComponent(userId) : 
+          'http://127.0.0.1:5002/api/user-approval/' + encodeURIComponent(userId);
+        
+        const res = await fetch(apiUrl);
         if (!res.ok) return;
         const data = await res.json();
         if (data && data.isApproved) {
@@ -316,7 +321,12 @@
 
         // Submit to server as pending (server should respect status)
         try {
-          const response = await fetch('/api/save-payment', {
+          // Use config API URL if available, otherwise fallback
+          const apiUrl = (window.appConfig && window.appConfig.API_URL) ? 
+            window.appConfig.API_URL + '/api/save-payment' : 
+            'http://127.0.0.1:5002/api/save-payment';
+          
+          const response = await fetch(apiUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(paymentRecord)

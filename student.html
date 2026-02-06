@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard - APKL</title>
-    <link rel="stylesheet" href="admin-dashboard/style.css">
+    <link rel="stylesheet" href="./admin-dashboard/style.css">
     
     <!-- API Configuration (MUST be before other scripts) -->
     <script src="config-api.js"></script>
     
     <style>
+        /* Minimal fallback styles if admin-dashboard/style.css fails to load */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+        .admin-container { display: flex; height: 100vh; }
+        .sidebar { width: 250px; background: #2c3e50; color: #fff; padding: 20px; overflow-y: auto; }
+        .main-content { flex: 1; overflow-y: auto; }
+        .top-bar { background: #fff; padding: 20px; border-bottom: 1px solid #ddd; }
+        .content-wrapper { padding: 20px; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .section-panel { background: #fff; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .data-table th, .data-table td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        .data-table th { background: #f0f0f0; font-weight: bold; }
+        button { padding: 8px 16px; background: #0066cc; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        
         /* Polished class-view styles for student video/screen */
         #student-class-view { font-family: Inter, Arial, Helvetica, sans-serif; color: #fff; }
         #student-class-view > div:first-child { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); padding: 14px 18px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
@@ -446,7 +461,21 @@
             const studentData = JSON.parse(localStorage.getItem('studentData') || '{}');
             const assigned = studentData.track || userData.track || '';
 
-            // If assigned track exists, use it; otherwise use empty to attempt API local retrieval
+            // Only load courses if a track is assigned; otherwise show warning
+            if (!assigned || !String(assigned).trim()) {
+                console.warn('⚠️ No track assigned. Showing placeholder message.');
+                const tbody = document.getElementById('dashboard-activities');
+                if (tbody) {
+                    tbody.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #999; padding: 30px;"><strong>No track assigned.</strong> Please contact admin to assign a track.</td></tr>';
+                }
+                const tbody2 = document.getElementById('full-class-activities');
+                if (tbody2) {
+                    tbody2.innerHTML = '<tr><td colspan="11" style="text-align: center; color: #999; padding: 30px;"><strong>No track assigned.</strong> Please contact admin to assign a track.</td></tr>';
+                }
+                return;
+            }
+
+            // If assigned track exists, use it
             loadCoursesFromAPI(assigned);
         }
 
@@ -481,8 +510,18 @@
         // Load courses from API based on track
         async function loadCoursesFromAPI(track) {
             try {
-                const response = await fetch(`http://127.0.0.1:5002/api/courses?track=${track}`);
-                const data = await response.json();
+                        // If frontend is hosted on static GitHub Pages or similar (no backend),
+                        // skip API fetch and use local JSON instead.
+                        const apiHost = String(window.appConfig?.API_URL || window.location.origin).toLowerCase();
+                        if (apiHost.includes('github.io') || apiHost.includes('pages.dev')) {
+                            console.warn('⚠️ Detected static hosting with no backend. Loading local courses.json instead.');
+                            loadCoursesFromLocalJSON(track);
+                            return;
+                        }
+
+                        const url = (track && String(track).trim()) ? `${window.appConfig?.API_URL || 'http://127.0.0.1:5002'}/api/courses?track=${encodeURIComponent(track)}` : `${window.appConfig?.API_URL || 'http://127.0.0.1:5002'}/api/courses`;
+                        const response = await fetch(url);
+                        const data = await response.json();
                 
                 if (!data.success || !data.courses) {
                     console.error('Failed to fetch courses:', data);
@@ -1178,10 +1217,30 @@
                     return;
                 }
 
-                const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-                const wsUrl = `${wsProtocol}//127.0.0.1:5002`;
-
-                ws = new WebSocket(wsUrl);
+                // Build WebSocket URL from configured API_URL so it works on Render or localhost
+                try {
+                    // Prefer explicit WebSocket URL if configured
+                    const explicitWs = window.appConfig && window.appConfig.WS_URL;
+                    if (explicitWs) {
+                        ws = new WebSocket(explicitWs);
+                    } else {
+                        const api = (window.appConfig && window.appConfig.API_URL) ? window.appConfig.API_URL : window.location.origin;
+                        // If API is a static host (github pages), don't attempt WebSocket
+                        if (String(api).includes('github.io') || String(api).includes('pages.dev')) {
+                            console.warn('⚠️ WebSocket skipped: running on static host with no WebSocket server');
+                            return;
+                        }
+                        const urlObj = new URL(api);
+                        const wsProtocol = (urlObj.protocol === 'https:') ? 'wss:' : 'ws:';
+                        const wsUrl = `${wsProtocol}//${urlObj.hostname}${urlObj.port ? ':' + urlObj.port : ''}`;
+                        ws = new WebSocket(wsUrl);
+                    }
+                } catch (e) {
+                    // Fallback to localhost
+                    const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+                    const wsUrl = `${wsProtocol}//127.0.0.1:5002`;
+                    ws = new WebSocket(wsUrl);
+                }
 
                 ws.onopen = () => {
                     console.log('✅ Connected to WebSocket');
